@@ -48,12 +48,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         //CSVファイル名を引数にしてloadCSVメソッドを使用し、CSVファイルを読み込む
-        csvArray = loadCSV("schedule")
+        csvArray = loadCSV("schedule2")
         print(csvArray)
         print(csvArray.count)
         
         //csvArrayの任意の行を取り出し、カンマを区切りとしてaryに格納
-        ary = csvArray[1].componentsSeparatedByString(",")
+        ary = csvArray[1].componentsSeparatedByString(",")  //今のところいらない
+        
         
         
         //delegateとdataSourceを設定
@@ -144,24 +145,25 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //CSVファイルのデータを格納するためのString型配列を宣言
         var csvArray:[String] = []
-        //CSVファイルのパスを設定
-        let csvBundle = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")!
         
-        do{
-            //csvBundleからファイルを読み込み、エンコーディングしてcsvDataに格納
-            let csvData = try String(contentsOfFile: csvBundle, encoding: NSUTF8StringEncoding)
-            //改行コードが"\r"の場合は"\n"に置換する
-            let lineChange = csvData.stringByReplacingOccurrencesOfString("\r", withString: "\n")
-            //"\n"の改行コードで要素を切り分け、配列csvArrayに格納する
-            csvArray = lineChange.componentsSeparatedByString("\n")
+        do {
+            //CSVファイルのパスを取得する。
+            let csvPath = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")
             
-        }catch{
-            print("Error!")
+            //CSVファイルのデータを取得する。
+            let csvData = try String(contentsOfFile:csvPath!, encoding:NSUTF8StringEncoding)
+            
+            //改行区切りでデータを分割して配列に格納する。
+            csvArray = csvData.componentsSeparatedByString("\n")
+            
+            print(csvArray)
+            
+        } catch {
+            print(error)
         }
         
         return csvArray     //戻り値の配列
     }
-    
     
     
 

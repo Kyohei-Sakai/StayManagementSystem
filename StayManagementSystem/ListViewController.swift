@@ -12,9 +12,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var staytableview: UITableView!
     
-    var ary:[String] = []
+    //var dic:[[name: String, grade: String, inTime: String, outTime: String]] = [][:]
     var csvArray:[String] = []
-    var ary2: [(name: String, grade: String, inTime: String, outTime: String)] = [
+    var dic2: [(name: String, grade: String, inTime: String, outTime: String)] = [
         ("田中","M2","12:00","15:00"),
         ("木下","M2","8:00","12:00"),
         ("松下","M2","12:00","15:00"),
@@ -22,7 +22,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ("北沢","B4","12:00","18:00"),
         ("武藤","B4","13:00","19:00"),
         ]
-    var ary3: [(name: String, grade: String, inTime: String, outTime: String)] = [
+    var dic3: [(name: String, grade: String, inTime: String, outTime: String)] = [
         ("藤田","M2","12:00","15:00"),
         ("斎藤","M2","8:00","12:00"),
         ("小川","M2","12:00","15:00"),
@@ -30,7 +30,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ("小野","B4","12:00","18:00"),
         ("岩尾","B4","13:00","19:00"),
         ]
-    var ary4: [(name: String, grade: String, inTime: String, outTime: String)] = [
+    var dic4: [(name: String, grade: String, inTime: String, outTime: String)] = [
         ("Jody","M2","12:00","15:00"),
         ("Mac","M2","8:00","12:00"),
         ("Rumer","M2","12:00","15:00"),
@@ -53,7 +53,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print(csvArray.count)
         
         //csvArrayの任意の行を取り出し、カンマを区切りとしてaryに格納
-        ary = csvArray[1].componentsSeparatedByString(",")  //今のところいらない
+        //dic = csvArray[1].componentsSeparatedByString(",")  //今のところいらない
+        
         
         
         
@@ -82,11 +83,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return ary2.count
+            return dic2.count
         } else if section == 1 {
-            return ary3.count
+            return dic3.count
         } else if section == 2 {
-            return ary4.count
+            return dic4.count
         } else {
             return 0
         }
@@ -99,26 +100,26 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomTableViewCell
         
-        //cell.nameLabel.text = ary2[indexPath.row].name
-        //cell.gradeLabel.text = ary2[indexPath.row].grade
-        //cell.inTimeLabel.text = ary2[indexPath.row].inTime
-        //cell.outTimeLabel.text = ary2[indexPath.row].outTime
+        //cell.nameLabel.text = dic2[indexPath.row].name
+        //cell.gradeLabel.text = dic2[indexPath.row].grade
+        //cell.inTimeLabel.text = dic2[indexPath.row].inTime
+        //cell.outTimeLabel.text = dic2[indexPath.row].outTime
         
         if indexPath.section == 0 {
             
             //上の４行を１つのメソッドにまとめたもの
-            cell.setCell(ary2[indexPath.row].name, gradeText: ary2[indexPath.row].grade, inTimeText: ary2[indexPath.row].inTime, outTimeText: ary2[indexPath.row].outTime)
+            cell.setCell(dic2[indexPath.row].name, gradeText: dic2[indexPath.row].grade, inTimeText: dic2[indexPath.row].inTime, outTimeText: dic2[indexPath.row].outTime)
             
         } else if indexPath.section == 1 {
-            cell.setCell(ary3[indexPath.row].name, gradeText: ary3[indexPath.row].grade, inTimeText: ary3[indexPath.row].inTime, outTimeText: ary3[indexPath.row].outTime)
+            cell.setCell(dic3[indexPath.row].name, gradeText: dic3[indexPath.row].grade, inTimeText: dic3[indexPath.row].inTime, outTimeText: dic3[indexPath.row].outTime)
         } else if indexPath.section == 2 {
-            cell.setCell(ary4[indexPath.row].name, gradeText: ary4[indexPath.row].grade, inTimeText: ary4[indexPath.row].inTime, outTimeText: ary4[indexPath.row].outTime)
+            cell.setCell(dic4[indexPath.row].name, gradeText: dic4[indexPath.row].grade, inTimeText: dic4[indexPath.row].inTime, outTimeText: dic4[indexPath.row].outTime)
         }
         
         
 
         /*
-        switch (ary2[indexPath.row].grade)
+        switch (dic2[indexPath.row].grade)
         {
         case "M2":
             cell.backgroundColor = UIColor.redColor();
@@ -166,7 +167,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()

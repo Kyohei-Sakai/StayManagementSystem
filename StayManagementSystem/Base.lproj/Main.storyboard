@@ -187,6 +187,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE2-Fu-0gd">
                                 <rect key="frame" x="338" y="20" width="30" height="30"/>
                                 <state key="normal" title="Button" image="switchIcon.png"/>
+                                <connections>
+                                    <segue destination="eW4-Wt-9zv" kind="show" id="gHa-Vd-x7P"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-AV-Pxx">
                                 <rect key="frame" x="0.0" y="71" width="375" height="576"/>
@@ -248,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="602.5" y="354.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Graph View Controller-->
         <scene sceneID="abe-z0-L8u">
             <objects>
-                <viewController id="eW4-Wt-9zv" sceneMemberID="viewController">
+                <viewController id="eW4-Wt-9zv" customClass="GraphViewController" customModule="StayManagementSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xwE-p3-hu8"/>
                         <viewControllerLayoutGuide type="bottom" id="Ccf-ex-E5w"/>
@@ -265,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDr-R4-kih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602.5" y="1063.5"/>
+            <point key="canvasLocation" x="726.5" y="1146.5"/>
         </scene>
     </scenes>
     <resources>

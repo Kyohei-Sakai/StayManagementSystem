@@ -32,8 +32,20 @@ class GraphViewController: UIViewController {
         BarPath.stroke()
     }
     
-    var dataArray: [(start: CGFloat, time: CGFloat)] = [
-        (2, 4), (1, 3), (0, 5), (2, 8), (4, 15), (0, 10), (3.5, 7.7)
+    // 文字列を描画
+    func drawString(word: String, fontSize: CGFloat, drawPoint: CGPoint){
+        let attrString = NSAttributedString(
+            string: word,
+            attributes:[NSForegroundColorAttributeName: UIColor.blackColor(),
+                NSFontAttributeName: UIFont.boldSystemFontOfSize(fontSize)])
+        attrString.drawAtPoint(drawPoint)
+        
+    }
+    
+    
+    var dataArray: [(name: String, start: CGFloat, time: CGFloat)] = [
+        ("田中", 2, 4), ("健太", 1, 3), ("典子", 0, 5), ("加藤", 2, 8), ("ザッキー", 4, 15),
+        ("えび蔵", 0, 10), ("Jack", 3.5, 7.7)
     ]
 
 
@@ -64,6 +76,7 @@ class GraphViewController: UIViewController {
         
         // 目盛り線
         let lineNum: Int = 12   // 目盛りの本数
+        let startTime: Int = 0 // "startTime":00
         for i in 1...lineNum {
             let xToEnd = size.width
             // 目盛りの幅
@@ -72,6 +85,9 @@ class GraphViewController: UIViewController {
             let yScalePoint = yMargin + yScaleInterval * CGFloat(i)
             
             drawLine(CGPoint(x: xMargin, y: yScalePoint), to: CGPoint(x: xToEnd, y: yScalePoint))
+            
+            // 目盛り線にラベルをつける
+            drawString("\(Int(startTime) + i)" + ":00", fontSize: 20.0, drawPoint: CGPoint(x: xMargin - 70, y: yScalePoint - 10))
         }
         
         // グラフ
@@ -88,6 +104,9 @@ class GraphViewController: UIViewController {
             let yToPoint = yFromPoint + yScaleInterval * dataArray[i - 1].time
             
             drawBar(CGPoint(x: xScalePoint, y: yFromPoint), to: CGPoint(x: xScalePoint, y: yToPoint), width: barWidth)
+            
+            // グラフに名前をつける
+            drawString(dataArray[i - 1].name, fontSize: 20.0, drawPoint: CGPoint(x: xScalePoint - 30, y: yMargin - 45))
         }
         
         

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F1B8D991D65F0F00010ED2E /* schedule2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7F1B8D981D65F0F00010ED2E /* schedule2.csv */; };
 		7F3944F71D4372EE002E3BC3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3944F61D4372EE002E3BC3 /* CustomTableViewCell.swift */; };
 		7F3944F91D437D5A002E3BC3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3944F81D437D5A002E3BC3 /* ListViewController.swift */; };
 		7F867A981D3207590020C04A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F867A971D3207590020C04A /* AppDelegate.swift */; };
@@ -36,6 +35,7 @@
 		7F867AE71D3215360020C04A /* switchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F867AE31D3215360020C04A /* switchIcon.png */; };
 		7F867AE91D3215AD0020C04A /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F867AE81D3215AD0020C04A /* homeIcon.png */; };
 		7F867AEE1D3237200020C04A /* schedule.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7F867AEC1D3237200020C04A /* schedule.csv */; };
+		7FB902C51D7E858700C13C67 /* TimeSchedule.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7FB902C41D7E858700C13C67 /* TimeSchedule.csv */; };
 		7FFA41AC1D73215B000769F2 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA41AB1D73215A000769F2 /* GraphViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F1B8D981D65F0F00010ED2E /* schedule2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = schedule2.csv; path = "../../../素材/Data/schedule2.csv"; sourceTree = "<group>"; };
 		7F3944F61D4372EE002E3BC3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		7F3944F81D437D5A002E3BC3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7F867A941D3207590020C04A /* StayManagementSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayManagementSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +91,7 @@
 		7F867AE31D3215360020C04A /* switchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchIcon.png; sourceTree = "<group>"; };
 		7F867AE81D3215AD0020C04A /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
 		7F867AEC1D3237200020C04A /* schedule.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schedule.csv; sourceTree = "<group>"; };
+		7FB902C41D7E858700C13C67 /* TimeSchedule.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimeSchedule.csv; sourceTree = "<group>"; };
 		7FFA41AB1D73215A000769F2 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,7 +204,7 @@
 		7F867AEB1D3237200020C04A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				7F1B8D981D65F0F00010ED2E /* schedule2.csv */,
+				7FB902C41D7E858700C13C67 /* TimeSchedule.csv */,
 				7F867AEC1D3237200020C04A /* schedule.csv */,
 			);
 			path = Data;
@@ -327,7 +327,7 @@
 				7F867AE71D3215360020C04A /* switchIcon.png in Resources */,
 				7F867A9F1D3207590020C04A /* Assets.xcassets in Resources */,
 				7F867AD41D320B520020C04A /* planIcon.png in Resources */,
-				7F1B8D991D65F0F00010ED2E /* schedule2.csv in Resources */,
+				7FB902C51D7E858700C13C67 /* TimeSchedule.csv in Resources */,
 				7F867AD51D320B520020C04A /* profile.png in Resources */,
 				7F867AD11D320B520020C04A /* friends.png in Resources */,
 				7F867AE61D3215360020C04A /* stayIcon2.png in Resources */,

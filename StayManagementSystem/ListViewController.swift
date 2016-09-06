@@ -48,7 +48,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         //CSVファイル名を引数にしてloadCSVメソッドを使用し、CSVファイルを読み込む
-        csvArray = loadCSV("schedule2")
+        csvArray = loadCSV("TimeSchedule")
         print(csvArray)
         print(csvArray.count)
         

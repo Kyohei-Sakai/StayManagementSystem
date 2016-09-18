@@ -15,15 +15,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBAction func stateTapped(sender: AnyObject) {
+    @IBAction func stateTapped(_ sender: AnyObject) {
     }
     
-    @IBAction func documentTapped(sender: AnyObject) {
+    @IBAction func documentTapped(_ sender: AnyObject) {
         //SegueをIdentifierで呼び出す
-        performSegueWithIdentifier("toDocumentView", sender: self)
+        performSegue(withIdentifier: "toDocumentView", sender: self)
     }
     
-    @IBAction func backFromListView(segue:UIStoryboardSegue){
+    @IBAction func backFromListView(_ segue:UIStoryboardSegue){
         NSLog("ViewController#backFromListView")
     }
 

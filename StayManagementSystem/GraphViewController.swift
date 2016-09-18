@@ -10,7 +10,7 @@ import UIKit
 
 class GraphViewController: UIViewController {
     
-    let size: CGSize = UIScreen.mainScreen().bounds.size
+    let size: CGSize = UIScreen.main.bounds.size
 //    let view = UIView(frame: CGRect(origin: CGPointZero, size: size))
 //    view.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
     
@@ -30,24 +30,24 @@ class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.frame = CGRectMake(0, 0, size.width, size.height)
-        scrollView.backgroundColor = UIColor.whiteColor()
+        scrollView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        scrollView.backgroundColor = UIColor.white
         print(size)
         
         // 十分な描画領域を確保
         let canvasSize = CGSize(width: size.width * 3, height: size.height * 3)
         
         let line: Line = Line(dataArray: dataArray)
-        line.frame = CGRectMake(0, 0, canvasSize.width, canvasSize.height)
-        line.backgroundColor = UIColor.clearColor()
+        line.frame = CGRect(x: 0, y: 0, width: canvasSize.width, height: canvasSize.height)
+        line.backgroundColor = UIColor.clear
         scrollView.addSubview(line)
         
         let bar: Bar = Bar(dataArray: dataArray)
-        bar.frame = CGRectMake(0, 0, canvasSize.width, canvasSize.height)
-        bar.backgroundColor = UIColor.clearColor()
+        bar.frame = CGRect(x: 0, y: 0, width: canvasSize.width, height: canvasSize.height)
+        bar.backgroundColor = UIColor.clear
         scrollView.addSubview(bar)
         
-        scrollView.contentSize = CGSizeMake(line.xLength, line.yLength)
+        scrollView.contentSize = CGSize(width: line.xLength, height: line.yLength)
         print(scrollView.contentSize)
         view.addSubview(scrollView)
         
@@ -78,16 +78,16 @@ class GraphViewController: UIViewController {
                 maxTime.append(dataArray[i].start + dataArray[i].time)
             }
             
-            self.yLength = yMargin + yScaleInterval * maxTime.maxElement()!
+            self.yLength = yMargin + yScaleInterval * maxTime.max()!
             self.xLength = xMargin + xScaleInterval * CGFloat(dataArray.count)
         }
         
         
-        override func drawRect(rect: CGRect) {
+        override func draw(_ rect: CGRect) {
             // 仕切り線（縦）
-            drawLine(CGPointMake(yMargin, 0), to: CGPointMake(yMargin, yLength), width: 2)
+            drawLine(CGPoint(x: yMargin, y: 0), to: CGPoint(x: yMargin, y: yLength), width: 2)
             // 仕切り線（横）
-            drawLine(CGPointMake(0, yMargin), to: CGPointMake(xLength, yMargin), width: 2)
+            drawLine(CGPoint(x: 0, y: yMargin), to: CGPoint(x: xLength, y: yMargin), width: 2)
             
             
             // 目盛り線の本数を求める(floor →小数点以下切り捨て)
@@ -107,22 +107,22 @@ class GraphViewController: UIViewController {
             
         }
         
-        func drawLine(from: CGPoint, to: CGPoint, width: CGFloat) {
+        func drawLine(_ from: CGPoint, to: CGPoint, width: CGFloat) {
             let linePath = UIBezierPath()
-            linePath.moveToPoint(from)
-            linePath.addLineToPoint(to)
+            linePath.move(to: from)
+            linePath.addLine(to: to)
             linePath.lineWidth = width
-            UIColor.grayColor().setStroke()
+            UIColor.gray.setStroke()
             linePath.stroke()
         }
         
         // 文字列を描画
-        func drawString(word: String, fontSize: CGFloat, drawPoint: CGPoint){
+        func drawString(_ word: String, fontSize: CGFloat, drawPoint: CGPoint){
             let attrString = NSAttributedString(
                 string: word,
-                attributes:[NSForegroundColorAttributeName: UIColor.blackColor(),
-                    NSFontAttributeName: UIFont.boldSystemFontOfSize(fontSize)])
-            attrString.drawAtPoint(drawPoint)
+                attributes:[NSForegroundColorAttributeName: UIColor.black,
+                    NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize)])
+            attrString.draw(at: drawPoint)
         }
         
     }
@@ -144,7 +144,7 @@ class GraphViewController: UIViewController {
             self.dataArray = dataArray
         }
         
-        override func drawRect(rect: CGRect) {
+        override func draw(_ rect: CGRect) {
             
             let BarNum: Int = dataArray.count
             
@@ -163,22 +163,22 @@ class GraphViewController: UIViewController {
             
         }
         
-        func drawBar(from: CGPoint, to: CGPoint, width: CGFloat) {
+        func drawBar(_ from: CGPoint, to: CGPoint, width: CGFloat) {
             let BarPath = UIBezierPath()
-            BarPath.moveToPoint(from)
-            BarPath.addLineToPoint(to)
+            BarPath.move(to: from)
+            BarPath.addLine(to: to)
             BarPath.lineWidth = width
-            UIColor.blueColor().setStroke()
+            UIColor.blue.setStroke()
             BarPath.stroke()
         }
         
         // 文字列を描画
-        func drawString(word: String, fontSize: CGFloat, drawPoint: CGPoint){
+        func drawString(_ word: String, fontSize: CGFloat, drawPoint: CGPoint){
             let attrString = NSAttributedString(
                 string: word,
-                attributes:[NSForegroundColorAttributeName: UIColor.blackColor(),
-                    NSFontAttributeName: UIFont.boldSystemFontOfSize(fontSize)])
-            attrString.drawAtPoint(drawPoint)
+                attributes:[NSForegroundColorAttributeName: UIColor.black,
+                    NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize)])
+            attrString.draw(at: drawPoint)
         }
         
     }

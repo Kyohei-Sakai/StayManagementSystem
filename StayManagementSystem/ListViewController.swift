@@ -40,7 +40,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ]
     
     // Sectionで使用する配列を定義する.
-    private let mySections: NSArray = ["在室", "予定", "退室"]
+    fileprivate let mySections: NSArray = ["在室", "予定", "退室"]
     
 
     override func viewDidLoad() {
@@ -65,14 +65,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //セクションの数を設定
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return mySections.count
         
     }
     
     //セクションのタイトルを設定
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return mySections[section] as? String
         
@@ -80,7 +80,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     //テーブルビューのセルの数をcsvArrayの要素数に設定
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
             return dic2.count
@@ -96,24 +96,24 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     //セルに表示する内容を設定
-    func tableView(tableView: UITableView, cellForRowAtIndexPath  indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt  indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
         
         //cell.nameLabel.text = dic2[indexPath.row].name
         //cell.gradeLabel.text = dic2[indexPath.row].grade
         //cell.inTimeLabel.text = dic2[indexPath.row].inTime
         //cell.outTimeLabel.text = dic2[indexPath.row].outTime
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             
             //上の４行を１つのメソッドにまとめたもの
-            cell.setCell(dic2[indexPath.row].name, gradeText: dic2[indexPath.row].grade, inTimeText: dic2[indexPath.row].inTime, outTimeText: dic2[indexPath.row].outTime)
+            cell.setCell(dic2[(indexPath as NSIndexPath).row].name, gradeText: dic2[(indexPath as NSIndexPath).row].grade, inTimeText: dic2[(indexPath as NSIndexPath).row].inTime, outTimeText: dic2[(indexPath as NSIndexPath).row].outTime)
             
-        } else if indexPath.section == 1 {
-            cell.setCell(dic3[indexPath.row].name, gradeText: dic3[indexPath.row].grade, inTimeText: dic3[indexPath.row].inTime, outTimeText: dic3[indexPath.row].outTime)
-        } else if indexPath.section == 2 {
-            cell.setCell(dic4[indexPath.row].name, gradeText: dic4[indexPath.row].grade, inTimeText: dic4[indexPath.row].inTime, outTimeText: dic4[indexPath.row].outTime)
+        } else if (indexPath as NSIndexPath).section == 1 {
+            cell.setCell(dic3[(indexPath as NSIndexPath).row].name, gradeText: dic3[(indexPath as NSIndexPath).row].grade, inTimeText: dic3[(indexPath as NSIndexPath).row].inTime, outTimeText: dic3[(indexPath as NSIndexPath).row].outTime)
+        } else if (indexPath as NSIndexPath).section == 2 {
+            cell.setCell(dic4[(indexPath as NSIndexPath).row].name, gradeText: dic4[(indexPath as NSIndexPath).row].grade, inTimeText: dic4[(indexPath as NSIndexPath).row].inTime, outTimeText: dic4[(indexPath as NSIndexPath).row].outTime)
         }
         
         
@@ -142,20 +142,20 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     //CSVファイルの読み込みメソッド
-    func loadCSV(fileName :String) -> [String]{
+    func loadCSV(_ fileName :String) -> [String]{
         
         //CSVファイルのデータを格納するためのString型配列を宣言
         var csvArray:[String] = []
         
         do {
             //CSVファイルのパスを取得する。
-            let csvPath = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")
+            let csvPath = Bundle.main.path(forResource: fileName, ofType: "csv")
             
             //CSVファイルのデータを取得する。
-            let csvData = try String(contentsOfFile:csvPath!, encoding:NSUTF8StringEncoding)
+            let csvData = try String(contentsOfFile:csvPath!, encoding:String.Encoding.utf8)
             
             //改行区切りでデータを分割して配列に格納する。
-            csvArray = csvData.componentsSeparatedByString("\n")
+            csvArray = csvData.components(separatedBy: "\n")
             
             print(csvArray)
             

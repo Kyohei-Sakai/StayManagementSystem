@@ -21,14 +21,14 @@ class CustomTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
     //表示内容を設定する
-    func setCell(nameText: String, gradeText: String, inTimeText: String, outTimeText: String) {
+    func setCell(_ nameText: String, gradeText: String, inTimeText: String, outTimeText: String) {
         
         nameLabel.text = nameText
         gradeLabel.text = gradeText
